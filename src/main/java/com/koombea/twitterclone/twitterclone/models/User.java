@@ -4,7 +4,7 @@ import com.koombea.twitterclone.twitterclone.validations.PasswordMatches;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -59,4 +59,19 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Tweet> tweets;
 
+    public User(String username, String email, String fullName) {
+        this.username = username;
+        this.email = email;
+        this.fullName = fullName;
+    }
+
+    public User(String username, String email, String fullName, String password) {
+        this.username = username;
+        this.email = email;
+        this.fullName = fullName;
+        this.password = password;
+    }
+    public User(){
+
+    }
 }
